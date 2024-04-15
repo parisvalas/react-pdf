@@ -174,7 +174,7 @@ const createEmbeddedFont = (PDFFont) =>
       const tag = [0, 1, 2, 3, 4, 5]
         .map(() => String.fromCharCode(Math.random() * 26 + 65))
         .join('');
-      const name = tag + '+' + this.font.postscriptName;
+      const name = tag + '+' + String(this.font.postscriptName).replace(/\0/g, '')
 
       const { bbox } = this.font;
       const descriptor = this.document.ref({
